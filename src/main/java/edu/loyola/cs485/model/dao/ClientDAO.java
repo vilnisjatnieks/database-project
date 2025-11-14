@@ -2,6 +2,8 @@ package edu.loyola.cs485.model.dao;
 
 import edu.loyola.cs485.model.entity.Client;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientDAO extends AbstractDAO<Client> {
     @Override
@@ -72,5 +74,26 @@ public class ClientDAO extends AbstractDAO<Client> {
         pst.executeUpdate();
 
         con.close();
+    }
+
+    @Override
+    public List<Client> list() throws SQLException {
+        ArrayList<Client> lstClient = new ArrayList<>();
+
+        Connection con = getConnection();
+        String sql = "SELECT * FROM client ORDER BY name_client ";
+        PreparedStatement pst = con.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) { // While there is a next row of results
+            Client c = new Client();
+            c.setID( rs.getInt("id_client") );
+            c.setName( rs.getString("name_client") );
+            c.setEmail( rs.getString("email") );
+            c.setDob( rs.getDate("dob") ); //Save row data in Client
+
+            lstClient.add( c ); // add client to our Collection
+        }
+
+        return lstClient;
     }
 }
