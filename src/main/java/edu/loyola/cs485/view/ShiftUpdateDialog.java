@@ -24,7 +24,7 @@ public class ShiftUpdateDialog extends JDialog {
                 onOK();
             }
         });
-
+/
 
 
         buttonCancel.addActionListener(new ActionListener() {
