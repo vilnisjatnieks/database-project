@@ -119,4 +119,5 @@ public class ShiftCrudDialog extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
 }

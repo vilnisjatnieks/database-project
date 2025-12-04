@@ -43,8 +43,8 @@ public class ShiftDAOTest {
         dao.setTestDatabase();
 
         Shift shift = new Shift();
-        shift.setStartShift(Timestamp.valueOf("2025-12-03 21:58:00.123456789"));
-        shift.setEndShift(Timestamp.valueOf("2025-12-04 21:58:00.123456789"));
+        shift.setStartShift(Timestamp.valueOf("2025-12-03 21:58:00"));
+        shift.setEndShift(Timestamp.valueOf("2025-12-04 21:58:00"));
 
         dao.create(shift);
         Shift found = dao.read(shift.getID()); //Function under test

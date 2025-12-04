@@ -13,7 +13,7 @@ import java.util.List;
 public class ShiftService {
 
     public Shift createShift(String strStartShift, String strEndShift) throws Exception {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.fffffffff");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         java.sql.Timestamp startShift = new java.sql.Timestamp(sdf.parse(strStartShift).getTime());
         java.sql.Timestamp endShift = new java.sql.Timestamp(sdf.parse(strEndShift).getTime());
 

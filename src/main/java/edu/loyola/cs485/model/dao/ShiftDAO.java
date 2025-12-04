@@ -10,7 +10,7 @@ public class ShiftDAO extends AbstractDAO<Shift> {
     public void create(Shift entity) throws SQLException {
         Connection con = getConnection(); // Always open a connection
 
-        String sql = "INSERT INTO Shift (start_shift, end_shift) VALUES (?, ?)";
+        String sql = "INSERT INTO shift (start_shift, end_shift) VALUES (?, ?)";
         PreparedStatement pst = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         pst.setTimestamp(1, entity.getStartShift());
         pst.setTimestamp(2, entity.getEndShift());

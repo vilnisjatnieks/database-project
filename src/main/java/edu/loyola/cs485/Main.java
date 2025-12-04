@@ -9,9 +9,9 @@ import java.sql.*;
 public class Main {
     static String ConUrl = "jdbc:mysql://localhost"; //protocol + url
     static String Port = "3306"; //default MySQL port
-    static String Database = "music_db"; // database/schema name
-    static String Username = "cs485dev"; //read this from a local file
-    static String Password = "csforever"; //Also read this from a file
+    static String Database = "shift_db"; // database/schema name
+    static String Username = "jdsanchez"; //read this from a local file
+    static String Password = "Josue2005#"; //Also read this from a file
 
     static String url = ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password;
 

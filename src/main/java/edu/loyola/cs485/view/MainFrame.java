@@ -7,7 +7,7 @@ public class MainFrame extends JFrame {
     // JFrame is the class for the Window Frame app
 
     public MainFrame() {
-        super("CS485 - Music Store");
+        super("CS485 - Shift Editor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         createMenuBar();
@@ -18,10 +18,10 @@ public class MainFrame extends JFrame {
 
         JMenu mnuFile = new JMenu("File"); // Each JMenu is th top menu option
         //Each menu will have many MenuItems
-        JMenuItem mniClient = new JMenuItem("Client CRUD");
+        JMenuItem mniClient = new JMenuItem("Shift CRUD");
         mniClient.addActionListener(e -> {
             //Code called when clicking on this menuitem
-            createClientCrudDialog();
+            createShiftCrudDialog();
         });
         mnuFile.add(mniClient);
         mnuFile.addSeparator();
@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
         this.setJMenuBar(menuBar);
     }
 
-    public void createClientCrudDialog(){
+    public void createShiftCrudDialog(){
         ShiftCrudDialog dialog = new ShiftCrudDialog();
         dialog.pack();
         dialog.setVisible(true);
