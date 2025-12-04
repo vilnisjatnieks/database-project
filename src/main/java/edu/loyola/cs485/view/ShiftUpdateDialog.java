@@ -9,12 +9,13 @@ public class ShiftUpdateDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-
+    private Shift testing;
     private JTextField txtId;
     private JTextField txtStartShift;
     private JTextField txtEndShift;
 
-    public ShiftUpdateDialog(Shift shift) {
+    public ShiftUpdateDialog(Shift something) {
+        testing = something;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
@@ -24,7 +25,7 @@ public class ShiftUpdateDialog extends JDialog {
                 onOK();
             }
         });
-/
+
 
 
         buttonCancel.addActionListener(new ActionListener() {
@@ -50,13 +51,9 @@ public class ShiftUpdateDialog extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
         ShiftService service = new ShiftService();
-        String id = txtId.getText();
-        String startShift = txtStartShift.getText();
-        String endShift = txtEndShift.getText();
         try {
-           // service.updateShift(shift);
+            service.updateShift(testing);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,8 +65,9 @@ public class ShiftUpdateDialog extends JDialog {
         dispose(); // dispose method from the superclass JDialog, closes the current dialog
     }
 
+
     public static void main(String[] args) {
-        ShiftInfoDialog dialog = new ShiftInfoDialog();
+        ShiftUpdateDialog dialog = new ShiftUpdateDialog(testing);
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
