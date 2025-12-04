@@ -1,11 +1,11 @@
 package edu.loyola.cs485.view;
-
 import edu.loyola.cs485.controller.ShiftService;
+import edu.loyola.cs485.model.entity.Shift;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ShiftInfoDialog extends JDialog {
+public class ShiftUpdateDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -14,7 +14,7 @@ public class ShiftInfoDialog extends JDialog {
     private JTextField txtStartShift;
     private JTextField txtEndShift;
 
-    public ShiftInfoDialog() {
+    public ShiftUpdateDialog(Shift shift) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
@@ -56,7 +56,7 @@ public class ShiftInfoDialog extends JDialog {
         String startShift = txtStartShift.getText();
         String endShift = txtEndShift.getText();
         try {
-            service.createShift(startShift, endShift);
+           // service.updateShift(shift);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -75,3 +75,4 @@ public class ShiftInfoDialog extends JDialog {
         System.exit(0);
     }
 }
+

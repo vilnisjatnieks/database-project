@@ -32,7 +32,14 @@ public class ShiftCrudDialog extends JDialog {
                 onCancel();
             }
         });
-
+/*
+        updateButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    updateClick();
+            }
+        });
+*/
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -53,12 +60,14 @@ public class ShiftCrudDialog extends JDialog {
                 deleteClick();
             }
         });
-        updateButton.addActionListener(new ActionListener() {
+       /* updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateClick();
             }
         });
+        /*
+        */
     }
 
     private void newClick() {
@@ -66,6 +75,7 @@ public class ShiftCrudDialog extends JDialog {
         ShiftInfoDialog dialog = new ShiftInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
+        populateUI();
     }
 
     private void onCancel() {
@@ -103,15 +113,21 @@ public class ShiftCrudDialog extends JDialog {
 
     }
 
-    public void updateClick() {
+   /* public void updateClick() {
         try{
+            ShiftUpdateDialog dialog = new ShiftUpdateDialog();
+            Shift c = (Shift) lstShiftUI.getSelectedValue();
             ShiftService service = new ShiftService();
-            // Left as an exercise for you to practice
+
+
+
 
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    */
 
     public static void main(String[] args) {
         ShiftCrudDialog dialog = new ShiftCrudDialog();

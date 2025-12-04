@@ -2,6 +2,8 @@ package edu.loyola.cs485.controller;
 
 import edu.loyola.cs485.model.dao.ShiftDAO;
 import edu.loyola.cs485.model.entity.Shift;
+
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
 import java.util.List;
@@ -36,4 +38,11 @@ public class ShiftService {
         ShiftDAO dao = new ShiftDAO();
         dao.delete(id);
     }
+
+    public void updateShift(Shift entity) throws Exception {
+        ShiftDAO dao  = new ShiftDAO();
+        dao.update(entity);
+    }
+
 }
+
