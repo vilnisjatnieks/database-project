@@ -10,7 +10,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
 
     private String ConUrl = "jdbc:mysql://localhost"; //protocol + url
     private String Port = "3306"; //default MySQL port
-    private String Database = "music_db"; // database/schema name
+    private String Database = "shift_db"; // database/schema name
     private String Username = "cs485dev"; //read this from a local file
     private String Password = "csforever"; //Also read this from a file
 

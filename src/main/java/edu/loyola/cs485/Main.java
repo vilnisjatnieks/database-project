@@ -1,11 +1,8 @@
 package edu.loyola.cs485;
 
-import edu.loyola.cs485.model.dao.ClientDAO;
-import edu.loyola.cs485.model.entity.Client;
 import edu.loyola.cs485.view.MainFrame;
 
 import java.sql.*;
-import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

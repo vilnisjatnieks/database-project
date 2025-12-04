@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
     }
 
     public void createClientCrudDialog(){
-        ClientCrudDialog dialog = new ClientCrudDialog();
+        ShiftCrudDialog dialog = new ShiftCrudDialog();
         dialog.pack();
         dialog.setVisible(true);
     }

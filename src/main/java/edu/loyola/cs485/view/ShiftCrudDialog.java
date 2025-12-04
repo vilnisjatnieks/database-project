@@ -1,21 +1,21 @@
 package edu.loyola.cs485.view;
 
-import edu.loyola.cs485.controller.ClientService;
-import edu.loyola.cs485.model.entity.Client;
+import edu.loyola.cs485.controller.ShiftService;
+import edu.loyola.cs485.model.entity.Shift;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class ClientCrudDialog extends JDialog {
+public class ShiftCrudDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JButton deleteButton;
     private JButton updateButton;
-    private JList lstClientUI;
+    private JList lstShiftUI;
 
-    public ClientCrudDialog() {
+    public ShiftCrudDialog() {
         setContentPane(contentPane);
         setModal(true);
         //getRootPane().setDefaultButton(buttonOK);
@@ -63,7 +63,7 @@ public class ClientCrudDialog extends JDialog {
 
     private void newClick() {
         // add your code here
-        ClientInfoDialog dialog = new ClientInfoDialog();
+        ShiftInfoDialog dialog = new ShiftInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
     }
@@ -75,11 +75,11 @@ public class ClientCrudDialog extends JDialog {
 
     private void deleteClick() {
         try{
-            ClientService service = new ClientService();
-            Client c = (Client) lstClientUI.getSelectedValue();
+            ShiftService service = new ShiftService();
+            Shift c = (Shift) lstShiftUI.getSelectedValue();
             if (c != null) {
-                service.deleteClient(c.getID());
-                lstClientUI.clearSelection();
+                service.deleteShift(c.getID());
+                lstShiftUI.clearSelection();
 
                 // Repopulate the JList to get new data
                 populateUI(); // fetch everything again from the DB
@@ -92,10 +92,10 @@ public class ClientCrudDialog extends JDialog {
 
     public void populateUI() {
         try {
-            ClientService service = new ClientService();
-            List<Client> lstdata = service.getAllClients();
+            ShiftService service = new ShiftService();
+            List<Shift> lstdata = service.getAllShifts();
 
-            lstClientUI.setListData( lstdata.toArray() );
+            lstShiftUI.setListData( lstdata.toArray() );
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -105,7 +105,7 @@ public class ClientCrudDialog extends JDialog {
 
     public void updateClick() {
         try{
-            ClientService service = new ClientService();
+            ShiftService service = new ShiftService();
             // Left as an exercise for you to practice
 
         }catch(Exception e){
@@ -114,7 +114,7 @@ public class ClientCrudDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        ClientCrudDialog dialog = new ClientCrudDialog();
+        ShiftCrudDialog dialog = new ShiftCrudDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

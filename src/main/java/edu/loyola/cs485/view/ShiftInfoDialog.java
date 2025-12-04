@@ -1,20 +1,19 @@
 package edu.loyola.cs485.view;
 
-import edu.loyola.cs485.controller.ClientService;
+import edu.loyola.cs485.controller.ShiftService;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ClientInfoDialog extends JDialog {
+public class ShiftInfoDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField txtId;
-    private JTextField txtName;
-    private JTextField txtEmail;
-    private JTextField txtDob;
+    private JTextField txtStartShift;
+    private JTextField txtEndShift;
 
-    public ClientInfoDialog() {
+    public ShiftInfoDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
@@ -49,13 +48,12 @@ public class ClientInfoDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        ClientService service = new ClientService();
+        ShiftService service = new ShiftService();
         String id = txtId.getText();
-        String name = txtName.getText();
-        String email = txtEmail.getText();
-        String dob = txtDob.getText();
+        String startShift = txtStartShift.getText();
+        String endShift = txtEndShift.getText();
         try {
-            service.createClient(name,email,dob);
+            service.createShift(startShift, endShift);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,7 +66,7 @@ public class ClientInfoDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        ClientInfoDialog dialog = new ClientInfoDialog();
+        ShiftInfoDialog dialog = new ShiftInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
