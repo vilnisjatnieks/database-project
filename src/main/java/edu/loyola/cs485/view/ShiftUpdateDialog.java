@@ -57,13 +57,7 @@ public class ShiftUpdateDialog extends JDialog {
 
     private void onOK() throws Exception {
         ShiftService service = new ShiftService();
-
-
-        // Get start time from form and convert to Timestamp
         String startShiftstr = txtStartShift.getText();
-
-
-        // Get end time from form and convert to Timestamp
         String endShiftstr = txtEndShift.getText();
 
         service.configure(startShiftstr, endShiftstr,temp);
@@ -76,7 +70,7 @@ public class ShiftUpdateDialog extends JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    // Setter for The temp Shift object
     void ShiftSet(Shift c) {
         temp = c;
     }
