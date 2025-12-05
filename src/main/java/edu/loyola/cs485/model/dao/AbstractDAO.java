@@ -12,7 +12,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     protected String Port = "3306"; //default MySQL port
     protected String Database = "shift_db"; // database/schema name
     protected String Username = "jdsanchez"; //read this from a local file
-    protected String Password = "password2005"; //Also read this from a file
+    protected String Password = "passwords"; //Also read this from a file
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password);

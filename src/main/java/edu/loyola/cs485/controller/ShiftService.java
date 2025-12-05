@@ -3,9 +3,7 @@ package edu.loyola.cs485.controller;
 import edu.loyola.cs485.model.dao.ShiftDAO;
 import edu.loyola.cs485.model.entity.Shift;
 
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -28,6 +26,7 @@ public class ShiftService {
 
         return shift;
     }
+    // Configure and take in String shifts, convert into datetime for SQL
     public void configure(String strStartShift, String strEndShift, Shift shift) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         java.sql.Timestamp startShift = new java.sql.Timestamp(sdf.parse(strStartShift).getTime());
