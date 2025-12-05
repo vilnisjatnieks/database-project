@@ -63,7 +63,7 @@ public class ShiftCrudDialog extends JDialog {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateClick();
+               updateClick();
             }
         });
 
@@ -118,11 +118,10 @@ public class ShiftCrudDialog extends JDialog {
         try{
             Shift c = (Shift) lstShiftUI.getSelectedValue();
             if(c != null) {
-                ShiftUpdateDialog dialog = new ShiftUpdateDialog(c);
+                ShiftUpdateDialog dialog = new ShiftUpdateDialog();
+                dialog.ShiftSet(c);
                 dialog.pack();
                 dialog.setVisible(true);
-
-
                 populateUI();
             }
 

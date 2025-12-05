@@ -28,6 +28,15 @@ public class ShiftService {
 
         return shift;
     }
+    public void configure(String strStartShift, String strEndShift, Shift shift) throws Exception{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        java.sql.Timestamp startShift = new java.sql.Timestamp(sdf.parse(strStartShift).getTime());
+        java.sql.Timestamp endShift = new java.sql.Timestamp(sdf.parse(strEndShift).getTime());
+        shift.setStartShift(startShift);
+        shift.setEndShift(endShift);
+
+
+    }
 
     public List<Shift> getAllShifts() throws Exception {
         ShiftDAO dao = new ShiftDAO();

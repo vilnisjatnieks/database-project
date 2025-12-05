@@ -4,28 +4,33 @@ import edu.loyola.cs485.model.entity.Shift;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.Timestamp;
+
 
 public class ShiftUpdateDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private Shift testing;
+    private Shift temp = new Shift();
     private JTextField txtId;
     private JTextField txtStartShift;
     private JTextField txtEndShift;
 
-    public ShiftUpdateDialog(Shift something) {
-        testing = something;
+
+    public ShiftUpdateDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonCancel);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                try {
+                    onOK();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
-
 
 
         buttonCancel.addActionListener(new ActionListener() {
@@ -50,10 +55,22 @@ public class ShiftUpdateDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
+
+    private void onOK() throws Exception {
         ShiftService service = new ShiftService();
+
+
+        // Get start time from form and convert to Timestamp
+        String startShiftstr = txtStartShift.getText();
+
+
+        // Get end time from form and convert to Timestamp
+        String endShiftstr = txtEndShift.getText();
+
+        service.configure(startShiftstr, endShiftstr,temp);
+
         try {
-            service.updateShift(testing);
+            service.updateShift(temp);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -61,16 +78,22 @@ public class ShiftUpdateDialog extends JDialog {
         }
     }
 
+    void ShiftSet(Shift c) {
+        temp = c;
+    }
+
+
     private void onCancel() {
         dispose(); // dispose method from the superclass JDialog, closes the current dialog
     }
 
 
     public static void main(String[] args) {
-        ShiftUpdateDialog dialog = new ShiftUpdateDialog(testing);
+        ShiftUpdateDialog dialog = new ShiftUpdateDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
     }
 }
+
 

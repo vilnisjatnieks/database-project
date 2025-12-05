@@ -51,6 +51,7 @@ public class ShiftDAO extends AbstractDAO<Shift> {
         pst.setTimestamp(1,entity.getStartShift());
         pst.setTimestamp(2,entity.getEndShift());
         pst.setInt(3,entity.getID());
+        System.out.println("Working");
         pst.executeUpdate();
         con.close();
 

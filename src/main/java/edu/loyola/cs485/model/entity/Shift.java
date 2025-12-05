@@ -33,6 +33,6 @@ public class Shift extends AbstractEntity {
 
     @Override
     public String toString(){
-        return getID().toString()+": Start of Shift:"+getStartShift()+" < End of Shift:"+getEndShift()+">";
+        return getID().toString()+": Start of Shift: "+getStartShift()+" < End of Shift: "+getEndShift()+" >";
     }
 }
