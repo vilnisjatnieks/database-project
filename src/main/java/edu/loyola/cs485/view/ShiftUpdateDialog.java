@@ -70,7 +70,7 @@ public class ShiftUpdateDialog extends JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    // Setter for The temp Shift object
+    // Setter for The Temp Shift object
     void ShiftSet(Shift c) {
         temp = c;
     }

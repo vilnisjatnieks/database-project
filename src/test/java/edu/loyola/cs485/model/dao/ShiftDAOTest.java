@@ -37,7 +37,7 @@ public class ShiftDAOTest {
                 () -> assertNotNull( shift.getID() )
         );
     }
-
+    // Update Test
     @Test
     public void testUpdateClient() throws Exception {
         ShiftDAO dao = new ShiftDAO();
