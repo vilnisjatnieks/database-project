@@ -52,7 +52,6 @@ public class ShiftInfoDialog extends JDialog {
     private void onOK() {
         // add your code here
         ShiftService service = new ShiftService();
-        String id = txtId.getText();
         String startShift = txtStartShift.getText();
         String endShift = txtEndShift.getText();
         try {

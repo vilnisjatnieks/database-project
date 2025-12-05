@@ -46,13 +46,12 @@ public class ShiftDAO extends AbstractDAO<Shift> {
     @Override
     public void update(Shift entity) throws SQLException {
         Connection con = getConnection();
-        // String sql = "INSERT INTO shift (start_shift, end_shift) VALUES (?, ?)";
-
         String sql = "UPDATE shift set start_shift = ?, end_shift = ? WHERE id_shift = ?";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setTimestamp(1,entity.getStartShift());
         pst.setTimestamp(2,entity.getEndShift());
         pst.setInt(3,entity.getID());
+        System.out.println("Working");
         pst.executeUpdate();
         con.close();
 
