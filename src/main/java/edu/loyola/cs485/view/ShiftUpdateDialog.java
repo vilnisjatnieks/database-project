@@ -4,7 +4,6 @@ import edu.loyola.cs485.model.entity.Shift;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.Timestamp;
 
 
 public class ShiftUpdateDialog extends JDialog {
