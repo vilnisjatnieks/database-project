@@ -1,5 +1,6 @@
 package edu.loyola.cs485.model.dao;
 
+import edu.loyola.cs485.controller.ShiftService;
 import edu.loyola.cs485.model.entity.Shift;
 import org.junit.jupiter.api.*;
 
@@ -24,8 +25,8 @@ public class ShiftDAOTest {
         dao.setTestDatabase();
 
         Shift shift = new Shift();
-        shift.setStartShift(Timestamp.valueOf("2025-12-03 21:58:00.123456789"));
-        shift.setEndShift(Timestamp.valueOf("2025-12-04 21:58:00.123456789"));
+        shift.setStartShift(Timestamp.valueOf("2025-12-03 21:58:00"));
+        shift.setEndShift(Timestamp.valueOf("2025-12-04 21:58:00"));
 
         dao.create(shift); // Method Under Test
 
@@ -35,6 +36,26 @@ public class ShiftDAOTest {
         assertAll(
                 () -> assertNotNull( shift.getID() )
         );
+    }
+    // Update Test
+    @Test
+    public void testUpdateClient() throws Exception {
+        ShiftDAO dao = new ShiftDAO();
+        dao.setTestDatabase();
+        Shift testShift = new Shift();
+        testShift.setStartShift(Timestamp.valueOf("2025-12-03 21:58:00"));
+        testShift.setEndShift(Timestamp.valueOf("2025-12-04 21:58:00"));
+        dao.create(testShift);
+
+        String test1 = "2000-01-01 07:00:00";
+        String test2 = "2000-01-01 10:00:00";
+        ShiftService config = new ShiftService();
+        config.configure(test1,test2,testShift);
+
+        dao.update(testShift);
+
+        assertEquals(Timestamp.valueOf("2000-01-01 07:00:00"), testShift.getStartShift());
+        assertEquals(Timestamp.valueOf("2000-01-01 10:00:00"), testShift.getEndShift());
     }
 
     @Test
